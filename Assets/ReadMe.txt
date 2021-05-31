@@ -1,3 +1,10 @@
+31/05/21
+- Master branch
+* Added attack system for player and enemies
+* Used IDamageable interface on player and enemies to detect them as damageable objects
+* Added acid attack for spider, instantiated by an animation event
+* Implemented death animations for enemies
+
 30/05/21
 - Master branch
 * Created base script (Enemy) for adding enemies
