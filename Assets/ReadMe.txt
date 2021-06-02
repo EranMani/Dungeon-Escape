@@ -6,6 +6,9 @@
 * Added basic UI and game singleton managers to control UI changes and game flow
 * Added lives system to the player. Now he dies when out of lives
 
+- feature/Unity_Ads
+* Added button to open Unity Ad in the shop UI
+
 31/05/21
 - Master branch
 * Added attack system for player and enemies
