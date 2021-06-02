@@ -26,6 +26,7 @@ public class Spider : Enemy, IDamageable
         if (Health <= 0)
         {
             anim.SetTrigger("death");
+            SpawnDiamonds();
             Destroy(this.gameObject, 4f);
         }
     }

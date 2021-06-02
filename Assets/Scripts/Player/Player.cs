@@ -11,6 +11,7 @@ public class Player : MonoBehaviour, IDamageable
     float _resetJumpTime = 0.15f;
     bool _resetJump;
     bool _isPlayerGrounded;
+    public int diamonds;
 
 
     Rigidbody2D _rigidBody;
@@ -26,6 +27,7 @@ public class Player : MonoBehaviour, IDamageable
         _rigidBody = GetComponent<Rigidbody2D>();
         _collider = GetComponent<BoxCollider2D>();
         _playerAnimation = GetComponent<PlayerAnimation>();
+        diamonds = 0;
     }
 
     // Update is called once per frame

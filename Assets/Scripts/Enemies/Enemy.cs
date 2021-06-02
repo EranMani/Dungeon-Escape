@@ -11,6 +11,7 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] protected int speed;
     [SerializeField] protected int gems;
     [SerializeField] protected Transform pointA, pointB;
+    [SerializeField] GameObject diamondPrefab;
 
     protected Animator anim;
     protected SpriteRenderer spriteRenderer;
@@ -83,7 +84,9 @@ public abstract class Enemy : MonoBehaviour
     }
 
     public virtual void EnemyHit(int health)
-    { 
+    {
+        if (_isDead) { return; }
+
         anim.SetTrigger("Hit");
         anim.SetBool("InCombat", true);
         isHit = true;
@@ -92,9 +95,16 @@ public abstract class Enemy : MonoBehaviour
         {
             _isDead = true;
             anim.SetTrigger("death");
+            SpawnDiamonds();
             Destroy(this.gameObject, 4f);
         }
     }
+
+    public void SpawnDiamonds()
+    {
+        GameObject diamond =  Instantiate(diamondPrefab, transform.position, Quaternion.identity);
+        diamond.GetComponent<Diamond>().diamondAmount = gems;
+    } 
 
     bool AnimatorIsPlaying(string stateName)
     {

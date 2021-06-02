@@ -1,3 +1,10 @@
+02/06/21
+- Master branch
+* Added basic shop system for the player
+* Updated enemies and player prefabs with latest changes
+* Added diamond as currency 
+* Added basic UI and game singleton managers to control UI changes and game flow
+
 31/05/21
 - Master branch
 * Added attack system for player and enemies

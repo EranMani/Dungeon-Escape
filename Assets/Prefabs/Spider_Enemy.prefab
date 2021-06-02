@@ -165,6 +165,7 @@ MonoBehaviour:
   gems: 0
   pointA: {fileID: 0}
   pointB: {fileID: 0}
+  diamondPrefab: {fileID: 1802643980464292, guid: 9af1db86e7ed6e546ab6ef9eaa18bf79, type: 3}
   acidPrefab: {fileID: 4009221745533959696, guid: 890015508e819bd49b14edac461770df, type: 3}
 --- !u!61 &1257476839
 BoxCollider2D:
