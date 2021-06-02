@@ -6,6 +6,10 @@
 * Added basic UI and game singleton managers to control UI changes and game flow
 * Added lives system to the player. Now he dies when out of lives
 
+- feature/Convert_To_Mobile_Touch branch
+* Imported joystick package from asset store
+* Joystick object now controls the movement of the player, while A and B button are controlling jump and attack behaviours
+
 31/05/21
 - Master branch
 * Added attack system for player and enemies

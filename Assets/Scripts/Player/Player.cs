@@ -13,9 +13,9 @@ public class Player : MonoBehaviour, IDamageable
     bool _isPlayerGrounded;
     public int diamonds;
 
-
     Rigidbody2D _rigidBody;
     BoxCollider2D _collider;
+    FixedJoystick _joystickHandle;
 
     PlayerAnimation _playerAnimation;
 
@@ -27,6 +27,7 @@ public class Player : MonoBehaviour, IDamageable
         _rigidBody = GetComponent<Rigidbody2D>();
         _collider = GetComponent<BoxCollider2D>();
         _playerAnimation = GetComponent<PlayerAnimation>();
+        _joystickHandle = GameObject.Find("Fixed Joystick").GetComponent<FixedJoystick>();
         diamonds = 0;
         Health = 4;
 
@@ -40,18 +41,6 @@ public class Player : MonoBehaviour, IDamageable
 
         Movement();
 
-        if (Input.GetButtonDown("Jump") && _isPlayerGrounded)
-        {
-            _rigidBody.velocity = new Vector2(_rigidBody.velocity.x, _jumpForce);
-            _playerAnimation.JumpPlayer(true);
-            StartCoroutine(ResetJumpRoutine());        
-        }
-
-        if (Input.GetKeyDown(KeyCode.E) && IsGrounded())
-        {
-            _playerAnimation.AttackPlayer();      
-        }
-
         // Debug.DrawRay(transform.position, Vector2.down * .2f, Color.green);
     }
 
@@ -59,7 +48,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         _isPlayerGrounded = IsGrounded();
 
-        _horizontalInput = Input.GetAxisRaw("Horizontal");
+        _horizontalInput = _joystickHandle.Horizontal;
         _rigidBody.velocity = new Vector2(_horizontalInput * _movementSpeed, _rigidBody.velocity.y);
 
         _playerAnimation.MovePlayer(_horizontalInput);
@@ -104,5 +93,23 @@ public class Player : MonoBehaviour, IDamageable
     {
         diamonds += gemsAmount;
         UIManager.Instance.UpdateGemCount(diamonds);
+    }
+
+    public void JumpPress()
+    {
+        if (_isPlayerGrounded)
+        {
+            _rigidBody.velocity = new Vector2(_rigidBody.velocity.x, _jumpForce);
+            _playerAnimation.JumpPlayer(true);
+            StartCoroutine(ResetJumpRoutine());
+        }       
+    }
+
+    public void AttackPress()
+    {
+        if (IsGrounded())
+        {
+            _playerAnimation.AttackPlayer();
+        }
     }
 }
