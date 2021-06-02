@@ -9,6 +9,7 @@
 - feature/Unity_Ads
 * Added button to open Unity Ad in the shop UI
 * Activated unity ads service and installed latest ad package
+* Implemented a call for a rewarded video from the Ads manager
 
 31/05/21
 - Master branch
