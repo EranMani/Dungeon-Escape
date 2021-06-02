@@ -22,6 +22,23 @@ public class UIManager : MonoBehaviour
     [SerializeField] Text playerGemCountText;
     [SerializeField] GameObject[] selectionImage;
     [SerializeField] Text[] prices;
+    [SerializeField] Text UIgemCountText;
+    [SerializeField] GameObject[] livesDisplay;
+
+    private void Awake()
+    {
+        _instance = this;
+    }
+
+    private void Start()
+    {
+        UpdateGemCount(0);
+    }
+
+    public void UpdateGemCount(int gemCount)
+    {
+        UIgemCountText.text = gemCount + "";
+    }
 
     public void OpenShop(int gemCount)
     {
@@ -51,8 +68,8 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private void Awake()
-    {
-        _instance = this;
-    }
+    public void RemoveLife(int livesRemaining)  
+    { 
+        livesDisplay[livesRemaining].SetActive(false);
+    }    
 }

@@ -28,11 +28,16 @@ public class Player : MonoBehaviour, IDamageable
         _collider = GetComponent<BoxCollider2D>();
         _playerAnimation = GetComponent<PlayerAnimation>();
         diamonds = 0;
+        Health = 4;
+
+        GameManager.Instance.IsPlayerAlive = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!GameManager.Instance.IsPlayerAlive) { return; }
+
         Movement();
 
         if (Input.GetButtonDown("Jump") && _isPlayerGrounded)
@@ -44,8 +49,7 @@ public class Player : MonoBehaviour, IDamageable
 
         if (Input.GetKeyDown(KeyCode.E) && IsGrounded())
         {
-            _playerAnimation.AttackPlayer();
-            
+            _playerAnimation.AttackPlayer();      
         }
 
         // Debug.DrawRay(transform.position, Vector2.down * .2f, Color.green);
@@ -85,6 +89,20 @@ public class Player : MonoBehaviour, IDamageable
 
     public void Damage()
     {
-        print("Player was attacked!");
+        print("Attacked!");
+        Health--;
+        UIManager.Instance.RemoveLife(Health);
+
+        if (Health <= 0)
+        {
+            GameManager.Instance.IsPlayerAlive = false;
+            _playerAnimation.PlayerDie();
+        }
+    }
+
+    public void AddGems(int gemsAmount)
+    {
+        diamonds += gemsAmount;
+        UIManager.Instance.UpdateGemCount(diamonds);
     }
 }

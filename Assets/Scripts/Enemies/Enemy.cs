@@ -75,7 +75,7 @@ public abstract class Enemy : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, moveToTarget, speed * Time.deltaTime);
         }
 
-        if (Vector3.Distance(transform.position, player.transform.position) > 2f)
+        if (Vector3.Distance(transform.position, player.transform.position) > 2f || !GameManager.Instance.IsPlayerAlive)
         {
             isHit = false;
             anim.SetBool("InCombat", false);
@@ -126,22 +126,22 @@ public abstract class Enemy : MonoBehaviour
 
             if (direction.x > 0)
             {
-                spriteRenderer.flipX = false;
+                transform.localScale = new Vector3(1, 1, 1);
             }
             else if(direction.x < 0)
             {
-                spriteRenderer.flipX = true;
+                transform.localScale = new Vector3(-1, 1, 1);
             }
         }
         else
         {
             if (moveToTarget == pointB.position)
             {
-                spriteRenderer.flipX = false;
+                transform.localScale = new Vector3(1, 1, 1);
             }
             else
             {
-                spriteRenderer.flipX = true;
+                transform.localScale = new Vector3(-1, 1, 1);
             }
         }
 

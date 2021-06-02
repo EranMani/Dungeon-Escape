@@ -4,6 +4,7 @@
 * Updated enemies and player prefabs with latest changes
 * Added diamond as currency 
 * Added basic UI and game singleton managers to control UI changes and game flow
+* Added lives system to the player. Now he dies when out of lives
 
 31/05/21
 - Master branch
