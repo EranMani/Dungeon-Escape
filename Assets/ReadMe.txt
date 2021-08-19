@@ -1,3 +1,7 @@
+03/06/21
+- feature/Main_Menu branch
+* Added main menu with the ability to start and quit the game
+
 02/06/21
 - Master branch
 * Added basic shop system for the player
