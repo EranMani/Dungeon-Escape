@@ -42,7 +42,7 @@ public class Player : MonoBehaviour, IDamageable
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.Instance.IsPortalActive) { return; }  
+        //if (GameManager.Instance.IsPortalActive) { return; }  
         if (!GameManager.Instance.IsPlayerAlive) { return; }
 
         Movement();
