@@ -67,8 +67,8 @@ public class Player : MonoBehaviour, IDamageable
     {
         _isPlayerGrounded = IsGrounded();
 
-        //_horizontalInput = Input.GetAxisRaw("Horizontal"); <-- Use this for debugging with keyboard
-        _horizontalInput = _joystickHandle.Horizontal;
+        _horizontalInput = Input.GetAxisRaw("Horizontal");// <-- Use this for debugging with keyboard
+        //_horizontalInput = _joystickHandle.Horizontal;
         _rigidBody.velocity = new Vector2(_horizontalInput * _movementSpeed, _rigidBody.velocity.y);
 
         _playerAnimation.MovePlayer(_horizontalInput);

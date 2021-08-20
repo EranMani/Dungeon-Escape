@@ -155,3 +155,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 3
+  hitImpactEffectPrefab: {fileID: 5281398914575807404, guid: 547dd02f281fc73449d7d5e292afec36, type: 3}

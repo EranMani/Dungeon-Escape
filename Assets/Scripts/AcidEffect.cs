@@ -5,6 +5,7 @@ using UnityEngine;
 public class AcidEffect : MonoBehaviour
 {
     [SerializeField] float _moveSpeed = 3f;
+    [SerializeField] GameObject hitImpactEffectPrefab;
 
     private void Start()
     {
@@ -21,6 +22,9 @@ public class AcidEffect : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            ParticleSystem effect = Instantiate(hitImpactEffectPrefab, other.transform.position, Quaternion.identity).GetComponent<ParticleSystem>();
+            effect.Play();
+
             IDamageable hit = other.GetComponent<IDamageable>();
             if (hit != null)
             {
