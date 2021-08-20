@@ -92,6 +92,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b2c411a4d474c4b91cd0b378b687ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitImpactEffectPrefab: {fileID: 8954516725464604623, guid: 7b391b6b7f1ea194894094f859f166e8, type: 3}
+--- !u!1 &1323059844
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1323059845}
+  m_Layer: 11
+  m_Name: Effect_Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1323059845
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323059844}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.007, y: -0.287, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8801265404382114427}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8801265404382114426
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,6 +134,7 @@ GameObject:
   - component: {fileID: 8801265404382114427}
   - component: {fileID: 8801265404382114425}
   - component: {fileID: 8801265404382114424}
+  - component: {fileID: 919495128}
   m_Layer: 11
   m_Name: Sprite
   m_TagString: Untagged
@@ -122,6 +154,7 @@ Transform:
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 839601662}
+  - {fileID: 1323059845}
   m_Father: {fileID: 8801265404429234035}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -195,6 +228,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &919495128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8801265404382114426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d83ac42a670a1a4d9aeb53cb6b52da7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkImpactEffectPrefab: {fileID: 881841397330091492, guid: e11d5011bb2dc9c4796ecd8426ca71ab, type: 3}
+  effectPos: {fileID: 1323059845}
 --- !u!1 &8801265404429234034
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,7 +289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 2
   speed: 1
-  gems: 0
+  gems: 5
   pointA: {fileID: 0}
   pointB: {fileID: 0}
   diamondPrefab: {fileID: 1802643980464292, guid: 9af1db86e7ed6e546ab6ef9eaa18bf79, type: 3}
