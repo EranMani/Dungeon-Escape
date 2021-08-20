@@ -54,7 +54,6 @@ public class Player : MonoBehaviour, IDamageable
     {
         if (_playerAnimation.GetAnim().GetCurrentAnimatorStateInfo(0).IsName("Player_Jump"))
         {
-            print(_playerAnimation.GetAnim().GetCurrentAnimatorStateInfo(0).normalizedTime);
             if (_playerAnimation.GetAnim().GetCurrentAnimatorStateInfo(0).normalizedTime < 1.5 && IsGrounded())
             {
                 ParticleSystem stones = Instantiate(groundEffect, stonesEffectPoint.transform.position, Quaternion.identity);
@@ -68,9 +67,8 @@ public class Player : MonoBehaviour, IDamageable
     {
         _isPlayerGrounded = IsGrounded();
 
-        _horizontalInput = Input.GetAxisRaw("Horizontal");
-        //_horizontalInput = _joystickHandle.Horizontal;
-        //print(_rigidBody.velocity.y);
+        //_horizontalInput = Input.GetAxisRaw("Horizontal"); <-- Use this for debugging with keyboard
+        _horizontalInput = _joystickHandle.Horizontal;
         _rigidBody.velocity = new Vector2(_horizontalInput * _movementSpeed, _rigidBody.velocity.y);
 
         _playerAnimation.MovePlayer(_horizontalInput);
