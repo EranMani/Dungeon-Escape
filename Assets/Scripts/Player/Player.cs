@@ -42,10 +42,16 @@ public class Player : MonoBehaviour, IDamageable
     // Update is called once per frame
     void Update()
     {
-        //if (GameManager.Instance.IsPortalActive) { return; }  
+        if (GameManager.Instance.IsPortalActive) { return; }
         if (!GameManager.Instance.IsPlayerAlive) { return; }
 
         Movement();
+        GroundLandEffect();
+        // Debug.DrawRay(transform.position, Vector2.down * .2f, Color.green);
+    }
+
+    private void GroundLandEffect()
+    {
         if (_playerAnimation.GetAnim().GetCurrentAnimatorStateInfo(0).IsName("Player_Jump"))
         {
             print(_playerAnimation.GetAnim().GetCurrentAnimatorStateInfo(0).normalizedTime);
@@ -55,13 +61,7 @@ public class Player : MonoBehaviour, IDamageable
                 stones.Play();
                 Destroy(stones, 1f);
             }
-            
         }
-
-       
-
-        // Debug.DrawRay(transform.position, Vector2.down * .2f, Color.green);
-
     }
 
     void Movement()
