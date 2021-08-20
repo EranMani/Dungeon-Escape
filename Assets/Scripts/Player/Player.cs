@@ -6,6 +6,9 @@ public class Player : MonoBehaviour, IDamageable
 {
     [SerializeField] float _movementSpeed = 3f;
     [SerializeField] float _jumpForce = 3f;
+    [SerializeField] Transform stonesEffectPoint;
+    [SerializeField] ParticleSystem groundEffect;
+
     float _horizontalInput;
     float jumpRayLength = 0.2f;
     float _resetJumpTime = 0.15f;
@@ -16,6 +19,7 @@ public class Player : MonoBehaviour, IDamageable
     Rigidbody2D _rigidBody;
     BoxCollider2D _collider;
     FixedJoystick _joystickHandle;
+    SpriteRenderer _sprite;
 
     PlayerAnimation _playerAnimation;
 
@@ -28,6 +32,7 @@ public class Player : MonoBehaviour, IDamageable
         _collider = GetComponent<BoxCollider2D>();
         _playerAnimation = GetComponent<PlayerAnimation>();
         _joystickHandle = GameObject.Find("Fixed Joystick").GetComponent<FixedJoystick>();
+        _sprite = GetComponentInChildren<SpriteRenderer>();
         diamonds = 0;
         Health = 4;
 
@@ -37,18 +42,33 @@ public class Player : MonoBehaviour, IDamageable
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.Instance.IsPortalActive) { return; }
         if (!GameManager.Instance.IsPlayerAlive) { return; }
 
         Movement();
-
+        GroundLandEffect();
         // Debug.DrawRay(transform.position, Vector2.down * .2f, Color.green);
+    }
+
+    private void GroundLandEffect()
+    {
+        if (_playerAnimation.GetAnim().GetCurrentAnimatorStateInfo(0).IsName("Player_Jump"))
+        {
+            if (_playerAnimation.GetAnim().GetCurrentAnimatorStateInfo(0).normalizedTime < 1.5 && IsGrounded())
+            {
+                ParticleSystem stones = Instantiate(groundEffect, stonesEffectPoint.transform.position, Quaternion.identity);
+                stones.Play();
+                Destroy(stones, 1f);
+            }
+        }
     }
 
     void Movement()
     {
         _isPlayerGrounded = IsGrounded();
 
-        _horizontalInput = _joystickHandle.Horizontal;
+        _horizontalInput = Input.GetAxisRaw("Horizontal");// <-- Use this for debugging with keyboard
+        //_horizontalInput = _joystickHandle.Horizontal;
         _rigidBody.velocity = new Vector2(_horizontalInput * _movementSpeed, _rigidBody.velocity.y);
 
         _playerAnimation.MovePlayer(_horizontalInput);

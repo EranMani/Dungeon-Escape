@@ -154,4 +154,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4096471d8477874d80ba1c066a957ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  diamondPickupEffectPrefab: {fileID: 6182535742714471178, guid: cfe8e7a22f710334382f354fbd45e206, type: 3}
+  movementSpeed: 3
   diamondAmount: 1
