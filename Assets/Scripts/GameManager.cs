@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
 
     public bool HasKeyToCastle { get; set; }
     public bool IsPlayerAlive { get; set; }
+    public Player Player { get; private set; }
 
     public bool IsPortalActive { 
         get
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         _instance = this;
+        Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
     private void Start()
