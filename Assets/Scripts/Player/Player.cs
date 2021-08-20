@@ -6,6 +6,9 @@ public class Player : MonoBehaviour, IDamageable
 {
     [SerializeField] float _movementSpeed = 3f;
     [SerializeField] float _jumpForce = 3f;
+    [SerializeField] Transform stonesEffectPoint;
+    [SerializeField] ParticleSystem groundEffect;
+
     float _horizontalInput;
     float jumpRayLength = 0.2f;
     float _resetJumpTime = 0.15f;
@@ -43,16 +46,31 @@ public class Player : MonoBehaviour, IDamageable
         if (!GameManager.Instance.IsPlayerAlive) { return; }
 
         Movement();
+        if (_playerAnimation.GetAnim().GetCurrentAnimatorStateInfo(0).IsName("Player_Jump"))
+        {
+            print(_playerAnimation.GetAnim().GetCurrentAnimatorStateInfo(0).normalizedTime);
+            if (_playerAnimation.GetAnim().GetCurrentAnimatorStateInfo(0).normalizedTime < 1.5 && IsGrounded())
+            {
+                ParticleSystem stones = Instantiate(groundEffect, stonesEffectPoint.transform.position, Quaternion.identity);
+                stones.Play();
+                Destroy(stones, 1f);
+            }
+            
+        }
+
+       
 
         // Debug.DrawRay(transform.position, Vector2.down * .2f, Color.green);
-        
+
     }
 
     void Movement()
     {
         _isPlayerGrounded = IsGrounded();
 
-        _horizontalInput = _joystickHandle.Horizontal;
+        _horizontalInput = Input.GetAxisRaw("Horizontal");
+        //_horizontalInput = _joystickHandle.Horizontal;
+        //print(_rigidBody.velocity.y);
         _rigidBody.velocity = new Vector2(_horizontalInput * _movementSpeed, _rigidBody.velocity.y);
 
         _playerAnimation.MovePlayer(_horizontalInput);
