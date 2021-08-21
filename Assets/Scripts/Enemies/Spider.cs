@@ -6,6 +6,8 @@ using UnityEngine;
 public class Spider : Enemy, IDamageable
 {
     [SerializeField] GameObject acidPrefab;
+    [SerializeField] bool fireAcidRight;
+    [SerializeField] Vector3 acidDirection;
 
     public int Health { get; set; }
 
@@ -13,6 +15,15 @@ public class Spider : Enemy, IDamageable
     {
         base.Init();
         Health = base.health;
+
+        if (fireAcidRight)
+        {
+            acidDirection = Vector3.right;
+        }
+        else
+        {
+            acidDirection = Vector3.left;
+        }
     }
 
     public override void Update()
@@ -38,7 +49,9 @@ public class Spider : Enemy, IDamageable
 
     public void Attack()
     {
-        Instantiate(acidPrefab, transform.position, Quaternion.identity);
+        GameObject acid = Instantiate(acidPrefab, transform.position, Quaternion.identity);
+
+        acid.GetComponent<AcidEffect>().SetDirection(acidDirection);
     }
 
 }
