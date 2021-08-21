@@ -6,6 +6,7 @@ public class AcidEffect : MonoBehaviour
 {
     [SerializeField] float _moveSpeed = 3f;
     [SerializeField] GameObject hitImpactEffectPrefab;
+    Vector3 throwDirection;
 
     private void Start()
     {
@@ -15,7 +16,12 @@ public class AcidEffect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.right *_moveSpeed * Time.deltaTime);
+        transform.Translate(throwDirection * _moveSpeed * Time.deltaTime);
+    }
+
+    public void SetDirection(Vector3 direction)
+    {
+        throwDirection = direction;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
