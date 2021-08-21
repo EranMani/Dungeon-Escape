@@ -25,7 +25,7 @@ public class Spider : Enemy, IDamageable
             acidDirection = Vector3.left;
         }
 
-        InvokeRepeating("AttackState", 1f, 2f);
+        InvokeRepeating("AttackState", 1f, 1.5f);
     }
 
     public override void Update()
@@ -36,7 +36,7 @@ public class Spider : Enemy, IDamageable
     void AttackState()
     {
         float randValue = UnityEngine.Random.value;
-        if (randValue < .4f) // 30% of the time
+        if (randValue < .3f) // 30% of the time
         {
             anim.SetTrigger("Attack");
         }
