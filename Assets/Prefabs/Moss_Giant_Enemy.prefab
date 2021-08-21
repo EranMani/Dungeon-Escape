@@ -93,6 +93,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitImpactEffectPrefab: {fileID: 8954516725464604623, guid: 7b391b6b7f1ea194894094f859f166e8, type: 3}
+--- !u!1 &1256876103
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1256876104}
+  m_Layer: 11
+  m_Name: Death_Box_Left
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1256876104
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256876103}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.235, y: -0.258, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8801265404382114427}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1323059844
 GameObject:
   m_ObjectHideFlags: 0
@@ -123,6 +153,36 @@ Transform:
   m_Father: {fileID: 8801265404382114427}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2096515351
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2096515352}
+  m_Layer: 11
+  m_Name: Death_Box_Right
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2096515352
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2096515351}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.183, y: -0.258, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8801265404382114427}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8801265404382114426
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,6 +195,7 @@ GameObject:
   - component: {fileID: 8801265404382114425}
   - component: {fileID: 8801265404382114424}
   - component: {fileID: 919495128}
+  - component: {fileID: 1633175434}
   m_Layer: 11
   m_Name: Sprite
   m_TagString: Untagged
@@ -155,6 +216,8 @@ Transform:
   m_Children:
   - {fileID: 839601662}
   - {fileID: 1323059845}
+  - {fileID: 2096515352}
+  - {fileID: 1256876104}
   m_Father: {fileID: 8801265404429234035}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -242,6 +305,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkImpactEffectPrefab: {fileID: 881841397330091492, guid: e11d5011bb2dc9c4796ecd8426ca71ab, type: 3}
   effectPos: {fileID: 1323059845}
+--- !u!114 &1633175434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8801265404382114426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24df6c3f4823ab24caf7d1c22efcf465, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundImpactEffectPrefab: {fileID: 6512861460948828323, guid: ff06207b2efee854897f63356634260b, type: 3}
+  leftFall: {fileID: 2096515352}
+  rightFall: {fileID: 1256876104}
 --- !u!1 &8801265404429234034
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public class Spider : Enemy, IDamageable
     [SerializeField] GameObject acidPrefab;
     [SerializeField] bool fireAcidRight;
     [SerializeField] Vector3 acidDirection;
+    [SerializeField] float delayAttackTime = 1.5f;
 
     public int Health { get; set; }
 
@@ -25,7 +26,7 @@ public class Spider : Enemy, IDamageable
             acidDirection = Vector3.left;
         }
 
-        InvokeRepeating("AttackState", 1f, 1.5f);
+        InvokeRepeating("AttackState", 1f, delayAttackTime);
     }
 
     public override void Update()
