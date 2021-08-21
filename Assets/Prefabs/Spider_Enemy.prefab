@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1478212546
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1478212547}
+  m_Layer: 11
+  m_Name: Death_Ground_Box
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1478212547
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1478212546}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.031, y: -0.238, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6997822544422626549}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6997822544422626538
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,6 +42,7 @@ GameObject:
   - component: {fileID: 6997822544422626551}
   - component: {fileID: 6997822544422626548}
   - component: {fileID: 1416851115}
+  - component: {fileID: 1583462111}
   m_Layer: 11
   m_Name: Sprite
   m_TagString: Untagged
@@ -29,7 +60,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
-  m_Children: []
+  m_Children:
+  - {fileID: 1478212547}
   m_Father: {fileID: 6997822544790980261}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -75,7 +107,7 @@ SpriteRenderer:
   m_SortingOrder: 51
   m_Sprite: {fileID: 21300000, guid: 13e90ccfcfc516e4e9365c1288654cb5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -116,6 +148,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPrefab: {fileID: 290586436754149585, guid: bcf2e54123cd6d747879405a55f78011, type: 3}
+--- !u!114 &1583462111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6997822544422626538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24df6c3f4823ab24caf7d1c22efcf465, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundImpactEffectPrefab: {fileID: 6512861460948828323, guid: ff06207b2efee854897f63356634260b, type: 3}
+  leftFall: {fileID: 1478212547}
+  rightFall: {fileID: 1478212547}
 --- !u!1 &6997822544790980315
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,8 +215,9 @@ MonoBehaviour:
   pointB: {fileID: 0}
   diamondPrefab: {fileID: 1802643980464292, guid: 9af1db86e7ed6e546ab6ef9eaa18bf79, type: 3}
   acidPrefab: {fileID: 4009221745533959696, guid: 890015508e819bd49b14edac461770df, type: 3}
-  fireAcidRight: 1
+  fireAcidRight: 0
   acidDirection: {x: 0, y: 0, z: 0}
+  delayAttackTime: 2.5
 --- !u!61 &1257476839
 BoxCollider2D:
   m_ObjectHideFlags: 0
