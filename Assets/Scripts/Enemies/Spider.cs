@@ -24,10 +24,22 @@ public class Spider : Enemy, IDamageable
         {
             acidDirection = Vector3.left;
         }
+
+        InvokeRepeating("AttackState", 1f, 2f);
     }
 
     public override void Update()
     {
+       
+    }
+
+    void AttackState()
+    {
+        float randValue = UnityEngine.Random.value;
+        if (randValue < .4f) // 30% of the time
+        {
+            anim.SetTrigger("Attack");
+        }
         
     }
 
@@ -48,10 +60,9 @@ public class Spider : Enemy, IDamageable
     }
 
     public void Attack()
-    {
+    {      
         GameObject acid = Instantiate(acidPrefab, transform.position, Quaternion.identity);
-
-        acid.GetComponent<AcidEffect>().SetDirection(acidDirection);
+        acid.GetComponent<AcidEffect>().SetDirection(acidDirection);     
     }
 
 }

@@ -7,16 +7,27 @@ public class AcidEffect : MonoBehaviour
     [SerializeField] float _moveSpeed = 3f;
     [SerializeField] GameObject hitImpactEffectPrefab;
     Vector3 throwDirection;
+    float timeToDestroy = 3f;
+    float startTime = 0f;
 
     private void Start()
     {
-        Destroy(this.gameObject, 5f);
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.Translate(throwDirection * _moveSpeed * Time.deltaTime);
+        startTime += Time.deltaTime;
+
+        if (startTime >= timeToDestroy)
+        {
+            ParticleSystem effect = Instantiate(hitImpactEffectPrefab, transform.position, Quaternion.identity).GetComponent<ParticleSystem>();
+            effect.Play();
+
+            Destroy(gameObject);
+        }
+
     }
 
     public void SetDirection(Vector3 direction)
