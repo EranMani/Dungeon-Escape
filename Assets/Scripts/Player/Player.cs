@@ -44,6 +44,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         if (GameManager.Instance.IsPortalActive) { return; }
         if (!GameManager.Instance.IsPlayerAlive) { return; }
+        if (_playerAnimation.GetAnim().GetCurrentAnimatorStateInfo(0).IsName("Player_Hit")) { return; }
 
         Movement();
         GroundLandEffect();
@@ -98,7 +99,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public void Damage()
     {
-        print("Attacked!");
+        _playerAnimation.PlayerHit();
         Health--;
         UIManager.Instance.RemoveLife(Health);
 
