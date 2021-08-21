@@ -174,6 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b2c411a4d474c4b91cd0b378b687ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitImpactEffectPrefab: {fileID: 6850255928308939475, guid: 6ba0e32d3276f984ebac0e76628d3224, type: 3}
 --- !u!1 &4062752266473266756
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,7 +351,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 50
   m_Sprite: {fileID: 21300000, guid: 9c2a45de3e464a24d9a75e2b40229ce0, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
